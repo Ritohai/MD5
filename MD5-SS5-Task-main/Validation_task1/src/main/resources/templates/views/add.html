@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+</head>
+<body>
+<form action="/create/user" method="post" th:object="${createUserForm}">
+  <label>First Name</label>
+  <span style="color: red" th:if="${#fields.hasErrors('firstName')}" th:error="*{firstName}">The name must more than 5 and less than 45 and not required!</span>
+  <input type="text" name="firstName" th:field="*{firstName}"><br>
+  <label>Last Name</label>
+  <span style="color: red" th:if="${#fields.hasErrors('lastName')}" th:error="*{lastName}">The name must more than 5 and less than 45 and not required!</span>
+  <input type="text" name="lastName" th:field="*{lastName}"><br>
+  <label>Phone</label>
+  <span style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:error="*{phoneNumber}">Phone number is not valid</span>
+  <input type="text" name="phoneNumber" th:field="*{phoneNumber}"><br>
+  <label>Email</label>
+  <span style="color: red" th:if="${#fields.hasErrors('email')}" th:error="*{email}"> Email is not valid</span>
+  <input type="email" name="email" th:field="*{email}"><br>
+  <label>Age</label>
+  <span style="color: red" th:if="${#fields.hasErrors('age')}" th:error="*{age}"> Age is not valid</span>
+  <input type="number" name="age" th:field="*{age}"><br>
+  <button type="submit">Create</button>
+</form>
+</body>
+</html>

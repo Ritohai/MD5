@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/edit}" th:object="${song}" method="post">
+    <table>
+        <tr>
+            <td>Id</td>
+            <td><input th:field="*{id}" readonly></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/>
+            <span style="color: red" th:if="${#fields.hasErrors('name')}" th:error="*{name}">Not allowed to leave blank
+             Do not exceed 800 characters
+             Does not contain special characters like @ ; , . = - + , ….</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>Singer:</td>
+            <td><input type="text" th:field="*{singer}"/>
+            <span style="color: red" th:if="${#fields.hasErrors('singer')}" th:error="*{singer}">
+                Not allowed to leave blank
+             Do not exceed 300 characters
+             Does not contain special characters like @ ; , . = - + , ….</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td><input type="text" th:field="*{category}"/>
+            <span style="color: red" th:if="${#fields.hasErrors('name')}" th:error="*{name}">Not allowed to leave blank
+             Do not exceed 1000 characters
+             Except for the comma ",", the remaining special characters are not allowed to be saved into the DB.</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="edit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
